@@ -1,44 +1,85 @@
 import './styles/App.css';
-import {React, useEffect, useState} from 'react';
+import './styles/index.css';
+import './styles/themes.css';
+import { React, useEffect, useState, useRef } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import CursorGlow from './components/CursorGlow';
+import BackToTop from './components/BackToTop';
 import Home from './sections/home';
 import Header from './sections/header';
 import About from './sections/about';
 import Experience from "./sections/experience";
+import WorkHistory from "./sections/workHistory";
 import Projects from "./sections/projects";
 import Contact from "./sections/contact";
 
-function App() {
-    const [isMobile, setIsMobile] = useState(true);
-    const [height, setHeight] = useState(window.innerHeight);
+function AppContent() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
-    const handleWindowSizeChange = () => {
-        setHeight(window.innerHeight);
-        setIsMobile(window.innerWidth <= 768);
-    }
+    const sectionRefs = {
+        home: useRef(null),
+        about: useRef(null),
+        workHistory: useRef(null),
+        experience: useRef(null),
+        projects: useRef(null),
+        contact: useRef(null),
+    };
 
     useEffect(() => {
-        handleWindowSizeChange();
-        window.addEventListener('resize', handleWindowSizeChange);
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        const handleScroll = () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            if (total > 0) setScrollProgress((window.scrollY / total) * 100);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('scroll', handleScroll);
         return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-        }
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
-    function handleScroll(offset) {
-        window.scrollTo({top: height * offset, behavior: 'smooth'});
+    function scrollToSection(ref) {
+        ref.current?.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <Header handleScroll={handleScroll} isMobile={isMobile}/>
-                <Home isMobile={isMobile}/>
-                <About isMobile={isMobile}/>
-                <Experience isMobile={isMobile}/>
-                <Projects isMobile={isMobile}/>
-                <Contact isMobile={isMobile} handleScroll={handleScroll}/>
-            </header>
+        <div>
+            <CursorGlow />
+            <BackToTop />
+            <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
+            <Header scrollToSection={scrollToSection} sectionRefs={sectionRefs} isMobile={isMobile} />
+            <main>
+                <div ref={sectionRefs.home}>
+                    <Home isMobile={isMobile} scrollToSection={scrollToSection} sectionRefs={sectionRefs} />
+                </div>
+                <div ref={sectionRefs.about}>
+                    <About isMobile={isMobile} />
+                </div>
+                <div ref={sectionRefs.workHistory}>
+                    <WorkHistory isMobile={isMobile} />
+                </div>
+                <div ref={sectionRefs.experience}>
+                    <Experience isMobile={isMobile} />
+                </div>
+                <div ref={sectionRefs.projects}>
+                    <Projects isMobile={isMobile} />
+                </div>
+                <div ref={sectionRefs.contact}>
+                    <Contact isMobile={isMobile} scrollToSection={scrollToSection} sectionRefs={sectionRefs} />
+                </div>
+            </main>
         </div>
+    );
+}
+
+function App() {
+    return (
+        <ThemeProvider>
+            <AppContent />
+        </ThemeProvider>
     );
 }
 

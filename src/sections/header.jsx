@@ -1,65 +1,109 @@
-import { React, useState } from 'react';
-import IconButton from '@mui/material/IconButton';
-import hamburger from '../assets/icons/hamburger.png';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-
+import { React, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import ThemeSelector from '../components/ThemeSelector';
 import '../styles/App.css';
-import {ScrollRef} from "../util/ScrollRef";
 
-const Header = ({handleScroll, isMobile}) => {
+const navItems = [
+    { label: 'Sobre', key: 'about' },
+    { label: 'Trajetória', key: 'workHistory' },
+    { label: 'Habilidades', key: 'experience' },
+    { label: 'Projetos', key: 'projects' },
+    { label: 'Contato', key: 'contact' },
+];
+
+const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
     const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    const toggleDrawer = (newOpen) => () => {
-        setOpen(newOpen);
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 30);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    const handleNav = (key) => {
+        scrollToSection(sectionRefs[key]);
+        setOpen(false);
     };
-    
-    const desktopHeader = (
-        <div style={{ display: 'flex', flexDirection: 'row', marginRight: 100 }}>
-            <h1 className='header-text-item' onClick={() => handleScroll(ScrollRef.About)}>Sobre</h1>
-            <h1 className='header-text-item' onClick={() => handleScroll(ScrollRef.Experience)}>Experiência</h1>
-            <h1 className='header-text-item' onClick={() => handleScroll(ScrollRef.Projects)}>Projetos</h1>
-            <h1 className='header-text-item' onClick={() => handleScroll(ScrollRef.Contact)}>Contato</h1>
-        </div>
-    );
-
-    const mobileHeader = (
-        <div className='header-text-item-button' style={{marginRight: 10}}>
-            <IconButton aria-label="delete">
-                <img src={hamburger} alt='hamburger' width={50} height={50} onClick={toggleDrawer(true)} />
-            </IconButton>
-        </div>
-    );
-
-    const DrawerList = (
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-          <List>
-            {['Sobre', 'Experiência', 'Projetos', 'Contato'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemText className='header-text-item' primary={text} style={{fontSize: 50}} onClick={() => handleScroll(index + 1)} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      );
 
     return (
-        <div style={{ marginTop: '50', display: 'flex', justifyContent: 'space-between', minHeight: 100, maxHeight: 100 }}>
-            <div>
-                <h1 className='header-text' style={{marginLeft: isMobile ? 40 : 100, fontSize: isMobile ? 20 : 24, textWrap: 'nowrap'}}>William Coelho</h1>
-            </div>
-            {isMobile ? mobileHeader : desktopHeader}
-            <Drawer open={open} onClose={toggleDrawer(false)} anchor='right'>
-                {DrawerList}
-            </Drawer>
-        </div>
+        <>
+            <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
+                <button
+                    className="header__brand"
+                    onClick={() => scrollToSection(sectionRefs.home)}
+                >
+                    William Coelho
+                </button>
+
+                {!isMobile ? (
+                    <nav className="header__nav">
+                        {navItems.map(({ label, key }) => (
+                            <button
+                                key={key}
+                                className="header__nav-item"
+                                onClick={() => handleNav(key)}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                        <ThemeSelector />
+                    </nav>
+                ) : (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <ThemeSelector />
+                        <button
+                            className="header__hamburger"
+                            onClick={() => setOpen(true)}
+                            aria-label="Abrir menu"
+                        >
+                            <span /><span /><span />
+                        </button>
+                    </div>
+                )}
+            </header>
+
+            <AnimatePresence>
+                {open && (
+                    <>
+                        <motion.div
+                            className="drawer-overlay"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setOpen(false)}
+                        />
+                        <motion.div
+                            className="drawer"
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        >
+                            <button
+                                className="drawer__close"
+                                onClick={() => setOpen(false)}
+                                aria-label="Fechar menu"
+                            >
+                                ✕
+                            </button>
+                            <nav className="drawer__nav">
+                                {navItems.map(({ label, key }) => (
+                                    <button
+                                        key={key}
+                                        className="drawer__nav-item"
+                                        onClick={() => handleNav(key)}
+                                    >
+                                        {label}
+                                    </button>
+                                ))}
+                            </nav>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
     );
-}
+};
 
 export default Header;
