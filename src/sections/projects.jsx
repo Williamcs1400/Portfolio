@@ -63,48 +63,48 @@ const ProjectCard = ({ project, toastStyle }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        whileHover={{ y: -8 }}
     >
         <div className="project-card__image-wrapper">
             <img src={project.image} alt={project.name} className="project-card__image" />
+            {/* Hover overlay with tags */}
+            <div className="project-card__overlay">
+                <div className="project-card__overlay-tags">
+                    {project.tags.map(tag => (
+                        <span key={tag} className="project-card__overlay-tag">{tag}</span>
+                    ))}
+                </div>
+            </div>
         </div>
         <div className="project-card__body">
             <h3 className="project-card__title">{project.name}</h3>
             <p className="project-card__desc">{project.desc}</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1rem' }}>
                 {project.tags.map(tag => (
-                    <span
-                        key={tag}
-                        style={{
-                            fontSize: '0.75rem',
-                            fontWeight: 500,
-                            padding: '0.2rem 0.6rem',
-                            borderRadius: 'var(--radius-full)',
-                            background: 'rgba(34, 211, 238, 0.08)',
-                            border: '1px solid rgba(34, 211, 238, 0.2)',
-                            color: 'var(--color-accent-2-light)',
-                        }}
-                    >
-                        {tag}
-                    </span>
+                    <span key={tag} className="project-card__tag">{tag}</span>
                 ))}
             </div>
             <div className="project-card__actions">
-                <button
+                <motion.button
                     className="project-card__btn project-card__btn--primary"
                     onClick={() => openUrl(project.github)}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
                 >
                     ↗ GitHub
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                     className="project-card__btn"
                     onClick={() =>
                         project.demo
                             ? openUrl(project.demo)
                             : toast('Demo não disponível', { style: toastStyle })
                     }
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
                 >
                     {project.demo ? '▶ Demo' : 'Demo —'}
-                </button>
+                </motion.button>
             </div>
         </div>
     </motion.div>

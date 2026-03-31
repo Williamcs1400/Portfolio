@@ -66,13 +66,15 @@ const Contact = ({ scrollToSection, sectionRefs }) => {
     const footerLinks = [
         { label: 'Início', key: 'home' },
         { label: 'Sobre', key: 'about' },
-        { label: 'Experiência', key: 'experience' },
+        { label: 'Trajetória', key: 'workHistory' },
+        { label: 'Habilidades', key: 'experience' },
         { label: 'Projetos', key: 'projects' },
     ];
 
     return (
         <section className="contact">
             <Toaster />
+            <div className="contact__bg-text" aria-hidden="true">CONTATO</div>
 
             <motion.div
                 style={{ textAlign: 'center', marginBottom: '2rem' }}
@@ -99,6 +101,9 @@ const Contact = ({ scrollToSection, sectionRefs }) => {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         onClick={() => handleLinkClick(link)}
+                        whileHover={{ x: 6, boxShadow: 'var(--shadow-glow)' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
                     >
                         <div className="contact__link-icon">
                             <img src={link.icon} alt={link.label} />

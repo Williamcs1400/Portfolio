@@ -51,16 +51,17 @@ const SKILLS = [
     },
 ];
 
-const LevelDots = ({ level, color }) => (
-    <span className="skill-item__level">
-        {Array.from({ length: 5 }).map((_, i) => (
-            <span
-                key={i}
-                className={`skill-item__dot${i < level ? ' skill-item__dot--filled' : ''}`}
-                style={i < level ? { background: color, borderColor: color } : {}}
-            />
-        ))}
-    </span>
+const SkillBar = ({ level, color }) => (
+    <div className="skill-bar">
+        <motion.div
+            className="skill-bar__fill"
+            style={{ background: `linear-gradient(90deg, ${color}80, ${color})` }}
+            initial={{ width: 0 }}
+            whileInView={{ width: `${(level / 5) * 100}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.95, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+        />
+    </div>
 );
 
 const fadeUp = {
@@ -94,6 +95,8 @@ const Experience = ({ isMobile }) => (
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
+                    whileHover={{ y: -4, boxShadow: 'var(--shadow-glow)' }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
                     <div className="skill-card__category">
                         <span
@@ -103,11 +106,19 @@ const Experience = ({ isMobile }) => (
                         {category}
                     </div>
                     <ul className="skill-card__list">
-                        {items.map(({ name, level }) => (
-                            <li key={name} className="skill-item">
+                        {items.map(({ name, level }, idx) => (
+                            <motion.li
+                                key={name}
+                                className="skill-item"
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: idx * 0.07 }}
+                            >
                                 <span className="skill-item__name">{name}</span>
-                                <LevelDots level={level} color={color} />
-                            </li>
+                                <SkillBar level={level} color={color} />
+                                <span className="skill-bar__pct">{level * 20}%</span>
+                            </motion.li>
                         ))}
                     </ul>
                 </motion.div>

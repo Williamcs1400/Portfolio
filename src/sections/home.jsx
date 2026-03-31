@@ -150,23 +150,44 @@ const Home = ({ isMobile, scrollToSection, sectionRefs }) => {
 
                     <motion.div className="home__actions"
                         variants={fadeUp} initial="hidden" animate="visible" custom={5}>
-                        <button className="btn btn--primary" onClick={openCV}>
+                        <motion.button
+                            className="btn btn--primary"
+                            onClick={openCV}
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.97 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                        >
                             Currículo
-                        </button>
-                        <button className="btn btn--outline"
-                            onClick={() => scrollToSection(sectionRefs.contact)}>
+                        </motion.button>
+                        <motion.button
+                            className="btn btn--outline"
+                            onClick={() => scrollToSection(sectionRefs.contact)}
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.97 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                        >
                             Fale Comigo
-                        </button>
+                        </motion.button>
                     </motion.div>
 
                     <motion.div className="home__socials"
                         variants={fadeUp} initial="hidden" animate="visible" custom={6}>
-                        <button className="home__social-link" onClick={() => openUrl(githubUrl)} aria-label="GitHub">
-                            <img src={github} alt="GitHub" />
-                        </button>
-                        <button className="home__social-link" onClick={() => openUrl(linkedinUrl)} aria-label="LinkedIn">
-                            <img src={linkedin} alt="LinkedIn" />
-                        </button>
+                        {[
+                            { icon: github, url: githubUrl, label: 'GitHub' },
+                            { icon: linkedin, url: linkedinUrl, label: 'LinkedIn' },
+                        ].map(({ icon, url, label }) => (
+                            <motion.button
+                                key={label}
+                                className="home__social-link"
+                                onClick={() => openUrl(url)}
+                                aria-label={label}
+                                whileHover={{ y: -5, scale: 1.15 }}
+                                whileTap={{ scale: 0.92 }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                            >
+                                <img src={icon} alt={label} />
+                            </motion.button>
+                        ))}
                     </motion.div>
 
                     {/* Stats */}
@@ -182,8 +203,9 @@ const Home = ({ isMobile, scrollToSection, sectionRefs }) => {
                 <motion.div className="home__image-wrapper"
                     initial={{ opacity: 0, scale: 0.85 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}>
-
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                    whileHover={{ scale: 1.02 }}
+                >
                     <div className="orbit-container">
                         {/* Centered photo ring */}
                         <div className={`home__image-ring${isMobile ? ' home__image-ring--mobile' : ''}`}>

@@ -124,7 +124,14 @@ const JobCard = ({ job, index }) => {
             >
                 <ul className="wh-card__bullets">
                     {job.bullets.map((b, i) => (
-                        <li key={i}>{b}</li>
+                        <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -12 }}
+                            animate={expanded ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                            transition={{ duration: 0.3, delay: expanded ? i * 0.06 : 0 }}
+                        >
+                            {b}
+                        </motion.li>
                     ))}
                 </ul>
             </motion.div>
@@ -146,7 +153,14 @@ const WorkHistory = ({ isMobile }) => (
         </motion.div>
 
         <div className={`wh-timeline${isMobile ? ' wh-timeline--mobile' : ''}`}>
-            <div className="wh-timeline__line" />
+            <motion.div
+                className="wh-timeline__line"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 1.6, ease: [0.4, 0, 0.2, 1] }}
+                style={{ transformOrigin: 'top' }}
+            />
             {JOBS.map((job, i) => (
                 <JobCard key={job.company} job={job} index={i} />
             ))}
