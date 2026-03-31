@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Portifolio2.0/static/css/main.0c3d9b78.css",
-    "main.js": "/Portifolio2.0/static/js/main.e803e266.js",
-    "static/media/me.png": "/Portifolio2.0/static/media/me.ed439ae154aec5909708.png",
-    "static/media/me-about.jpg": "/Portifolio2.0/static/media/me-about.657137d217bb68560d96.jpg",
-    "static/media/SkillsAndAbilities.pdf": "/Portifolio2.0/static/media/SkillsAndAbilities.b4355a11369696b48814.pdf",
-    "static/media/python.png": "/Portifolio2.0/static/media/python.cd407a640c6f3ab2209b.png",
-    "static/media/android.png": "/Portifolio2.0/static/media/android.5468b32855bc1dad75d2.png",
-    "static/media/java-api.jpg": "/Portifolio2.0/static/media/java-api.5307de954a89043f4fe0.jpg",
-    "static/media/arara.png": "/Portifolio2.0/static/media/arara.aeb18191c959a30cad74.png",
-    "static/media/github.png": "/Portifolio2.0/static/media/github.44eee0c4a6c25b0d7347.png",
-    "static/media/whatsapp.png": "/Portifolio2.0/static/media/whatsapp.8f84e8ce77ed527f4465.png",
-    "static/media/email.png": "/Portifolio2.0/static/media/email.67bda94140af311d041f.png",
-    "static/media/experience.png": "/Portifolio2.0/static/media/experience.868a03864d796bf125d8.png",
-    "static/media/linkedin.png": "/Portifolio2.0/static/media/linkedin.032cf8a63be2f0f4d425.png",
-    "index.html": "/Portifolio2.0/index.html",
-    "main.0c3d9b78.css.map": "/Portifolio2.0/static/css/main.0c3d9b78.css.map",
-    "main.e803e266.js.map": "/Portifolio2.0/static/js/main.e803e266.js.map"
+    "main.css": "/Portifolio/static/css/main.ace75cd6.css",
+    "main.js": "/Portifolio/static/js/main.8567cb10.js",
+    "static/media/me-about.jpg": "/Portifolio/static/media/me-about.657137d217bb68560d96.jpg",
+    "static/media/WilliamCoelho_CV.pdf": "/Portifolio/static/media/WilliamCoelho_CV.ba6fe99293d055e88c1b.pdf",
+    "static/media/me.jpg": "/Portifolio/static/media/me.b9a724032b064b98af6c.jpg",
+    "static/media/python.png": "/Portifolio/static/media/python.cd407a640c6f3ab2209b.png",
+    "static/media/android.png": "/Portifolio/static/media/android.5468b32855bc1dad75d2.png",
+    "static/media/java-api.jpg": "/Portifolio/static/media/java-api.5307de954a89043f4fe0.jpg",
+    "static/media/arara.png": "/Portifolio/static/media/arara.aeb18191c959a30cad74.png",
+    "static/media/github.png": "/Portifolio/static/media/github.44eee0c4a6c25b0d7347.png",
+    "static/media/whatsapp.png": "/Portifolio/static/media/whatsapp.8f84e8ce77ed527f4465.png",
+    "static/media/email.png": "/Portifolio/static/media/email.67bda94140af311d041f.png",
+    "static/media/experience.png": "/Portifolio/static/media/experience.868a03864d796bf125d8.png",
+    "static/media/linkedin.png": "/Portifolio/static/media/linkedin.032cf8a63be2f0f4d425.png",
+    "index.html": "/Portifolio/index.html",
+    "main.ace75cd6.css.map": "/Portifolio/static/css/main.ace75cd6.css.map",
+    "main.8567cb10.js.map": "/Portifolio/static/js/main.8567cb10.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c3d9b78.css",
-    "static/js/main.e803e266.js"
+    "static/css/main.ace75cd6.css",
+    "static/js/main.8567cb10.js"
   ]
 }
