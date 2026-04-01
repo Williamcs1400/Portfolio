@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Portifolio/static/css/main.ace75cd6.css",
-    "main.js": "/Portifolio/static/js/main.8567cb10.js",
-    "static/media/me-about.jpg": "/Portifolio/static/media/me-about.657137d217bb68560d96.jpg",
-    "static/media/WilliamCoelho_CV.pdf": "/Portifolio/static/media/WilliamCoelho_CV.ba6fe99293d055e88c1b.pdf",
-    "static/media/me.jpg": "/Portifolio/static/media/me.b9a724032b064b98af6c.jpg",
-    "static/media/python.png": "/Portifolio/static/media/python.cd407a640c6f3ab2209b.png",
-    "static/media/android.png": "/Portifolio/static/media/android.5468b32855bc1dad75d2.png",
-    "static/media/java-api.jpg": "/Portifolio/static/media/java-api.5307de954a89043f4fe0.jpg",
-    "static/media/arara.png": "/Portifolio/static/media/arara.aeb18191c959a30cad74.png",
-    "static/media/github.png": "/Portifolio/static/media/github.44eee0c4a6c25b0d7347.png",
-    "static/media/whatsapp.png": "/Portifolio/static/media/whatsapp.8f84e8ce77ed527f4465.png",
-    "static/media/email.png": "/Portifolio/static/media/email.67bda94140af311d041f.png",
-    "static/media/experience.png": "/Portifolio/static/media/experience.868a03864d796bf125d8.png",
-    "static/media/linkedin.png": "/Portifolio/static/media/linkedin.032cf8a63be2f0f4d425.png",
-    "index.html": "/Portifolio/index.html",
-    "main.ace75cd6.css.map": "/Portifolio/static/css/main.ace75cd6.css.map",
-    "main.8567cb10.js.map": "/Portifolio/static/js/main.8567cb10.js.map"
+    "main.css": "/Portfolio/static/css/main.ace75cd6.css",
+    "main.js": "/Portfolio/static/js/main.9c14246d.js",
+    "static/media/me-about.jpg": "/Portfolio/static/media/me-about.657137d217bb68560d96.jpg",
+    "static/media/WilliamCoelho_CV.pdf": "/Portfolio/static/media/WilliamCoelho_CV.ba6fe99293d055e88c1b.pdf",
+    "static/media/me.jpg": "/Portfolio/static/media/me.b9a724032b064b98af6c.jpg",
+    "static/media/python.png": "/Portfolio/static/media/python.cd407a640c6f3ab2209b.png",
+    "static/media/android.png": "/Portfolio/static/media/android.5468b32855bc1dad75d2.png",
+    "static/media/java-api.jpg": "/Portfolio/static/media/java-api.5307de954a89043f4fe0.jpg",
+    "static/media/arara.png": "/Portfolio/static/media/arara.aeb18191c959a30cad74.png",
+    "static/media/github.png": "/Portfolio/static/media/github.44eee0c4a6c25b0d7347.png",
+    "static/media/whatsapp.png": "/Portfolio/static/media/whatsapp.8f84e8ce77ed527f4465.png",
+    "static/media/email.png": "/Portfolio/static/media/email.67bda94140af311d041f.png",
+    "static/media/experience.png": "/Portfolio/static/media/experience.868a03864d796bf125d8.png",
+    "static/media/linkedin.png": "/Portfolio/static/media/linkedin.032cf8a63be2f0f4d425.png",
+    "index.html": "/Portfolio/index.html",
+    "main.ace75cd6.css.map": "/Portfolio/static/css/main.ace75cd6.css.map",
+    "main.9c14246d.js.map": "/Portfolio/static/js/main.9c14246d.js.map"
   },
   "entrypoints": [
     "static/css/main.ace75cd6.css",
-    "static/js/main.8567cb10.js"
+    "static/js/main.9c14246d.js"
   ]
 }
