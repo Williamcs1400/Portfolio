@@ -1,7 +1,7 @@
 {
-  "name": "portifolio2",
-  "description": "Portifolio pessoal",
-  "homepage": "https://williamcs1400.github.io/Portifolio2.0/",
+  "name": "Portfolio",
+  "description": "Portfolio Profissional",
+  "homepage": "https://williamcs1400.github.io/Portfolio/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

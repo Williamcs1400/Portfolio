@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <!-- SVG favicon (modern browsers) -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- ICO fallback (older browsers) -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.png" sizes="any" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#0D0B1E" />
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <meta name="description" content="William Coelho — Desenvolvedor Full Stack especializado em React, Node.js, Java Spring Boot e desenvolvimento mobile." />
@@ -28,7 +31,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>William Coelho</title>
+  <title>William Coelho - Portfólio</title>
   <script>
     (function() {
       var t = localStorage.getItem('portfolio-theme') || 'verde-preto';

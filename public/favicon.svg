@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D0B1E"/>
+      <stop offset="100%" stop-color="#130F2A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- Subtle accent border -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6.5"
+        fill="none"
+        stroke="#7C3AED"
+        stroke-opacity="0.45"
+        stroke-width="1"/>
+
+  <!-- Letter W with gradient -->
+  <text
+    x="16" y="23"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-weight="900"
+    font-size="19"
+    fill="url(#wg)"
+  >W</text>
+</svg>
+
