@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <!-- SVG favicon (modern browsers) -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <!-- ICO fallback (older browsers) -->
-  <link rel="icon" href="%PUBLIC_URL%/favicon.png" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+  <!-- PNG fallback -->
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" sizes="32x32" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0D0B1E" />
   <meta name="description" content="Web site created using create-react-app" />
@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
     rel="stylesheet">
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -34,8 +34,13 @@
   <title>William Coelho - Portfólio</title>
   <script>
     (function() {
-      var t = localStorage.getItem('portfolio-theme') || 'verde-preto';
-      document.documentElement.setAttribute('data-theme', t);
+      var saved = localStorage.getItem('portfolio-theme');
+      // If saved theme is the old default verde-preto, migrate to ciano-preto
+      if (!saved || saved === 'verde-preto') {
+        saved = 'ciano-preto';
+        localStorage.setItem('portfolio-theme', saved);
+      }
+      document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>
 </head>

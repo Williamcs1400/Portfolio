@@ -9,6 +9,8 @@ const JOBS = [
         role: 'Desenvolvedor FullStack',
         period: '2025 – 2026',
         current: false,
+        badgeInitials: 'CT',
+        badgeColor: 'linear-gradient(135deg, #0891B2, #22D3EE)',
         tags: ['Java', 'Spring Boot', 'Angular', 'PostgreSQL', 'JPA', 'JUnit', 'Jenkins', 'Jira'],
         bullets: [
             'Desenvolvimento em Java Spring Boot para criação de APIs, serviços, persistência e consultas em banco de dados com JPA, incluindo elaboração de queries complexas e otimizadas com SQL nativo.',
@@ -23,6 +25,8 @@ const JOBS = [
         role: 'Desenvolvedor Mobile/FullStack e Gestão',
         period: '2021 – 2025',
         current: false,
+        badgeInitials: 'ES',
+        badgeColor: 'linear-gradient(135deg, #7C3AED, #A78BFA)',
         tags: ['Java', 'Spring Boot', 'React', 'Angular', 'Qt5 (C++)', 'Docker', 'AWS', 'React Native', 'Flutter'],
         bullets: [
             'Desenvolvimento em Java Spring Boot de APIs e serviços relacionados à assinatura digital, criação de bibliotecas e microsserviços, além de Java Swing.',
@@ -35,11 +39,13 @@ const JOBS = [
         ],
     },
     {
-        company: 'Tribunal de Justiça do Distrito Federal',
+        company: 'Tribunal de Justiça do DF',
         subtitle: null,
-        role: 'Estagiário',
+        role: 'Estagiário de TI',
         period: '2020 – 2021',
         current: false,
+        badgeInitials: 'TJ',
+        badgeColor: 'linear-gradient(135deg, #CA8A04, #FACC15)',
         tags: ['Suporte Técnico', 'TI'],
         bullets: [
             'Suporte técnico ao usuário interno.',
@@ -51,6 +57,8 @@ const JOBS = [
         role: 'Jovem Aprendiz',
         period: '2015 – 2017',
         current: false,
+        badgeInitials: 'BB',
+        badgeColor: 'linear-gradient(135deg, #1D4ED8, #60A5FA)',
         tags: ['Administrativo'],
         bullets: [
             'Auxiliar de escritório.',
@@ -96,11 +104,22 @@ const JobCard = ({ job, index }) => {
                 aria-expanded={expanded}
             >
                 <div className="wh-card__header-left">
-                    <h3 className="wh-card__company">{job.company}</h3>
-                    {job.subtitle && (
-                        <span className="wh-card__subtitle">{job.subtitle}</span>
-                    )}
-                    <p className="wh-card__role">{job.role}</p>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                        {/* Company badge */}
+                        <div
+                            className="wh-card__company-badge"
+                            style={{ background: job.badgeColor }}
+                        >
+                            {job.badgeInitials}
+                        </div>
+                        <div>
+                            <h3 className="wh-card__company">{job.company}</h3>
+                            {job.subtitle && (
+                                <span className="wh-card__subtitle">{job.subtitle}</span>
+                            )}
+                            <p className="wh-card__role">{job.role}</p>
+                        </div>
+                    </div>
                 </div>
                 <span className={`wh-card__chevron${expanded ? ' wh-card__chevron--open' : ''}`}>
                     ›
@@ -149,6 +168,7 @@ const WorkHistory = ({ isMobile }) => (
             transition={{ duration: 0.6 }}
         >
             <p className="section-label">Onde já trabalhei</p>
+            <br/>
             <h2 className="section-title">Trajetória Profissional</h2>
         </motion.div>
 

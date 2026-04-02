@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import meabout from '../assets/me-about.jpg';
+import meabout from '../assets/me-about1.jpg';
 import education from '../assets/icons/education.png';
 import experience from '../assets/icons/experience.png';
 import { aboutText } from '../util/texts';
@@ -38,6 +38,13 @@ const About = ({ isMobile }) => {
 
     return (
         <section className="about">
+            {/* Decorative bg text */}
+            {/*<div className="about__bg-text" aria-hidden="true">ABOUT</div>*/}
+            {/* Aurora blobs */}
+            <div className="about__aurora" aria-hidden="true">
+                <div className="about__aurora-blob about__aurora-blob--1" />
+                <div className="about__aurora-blob about__aurora-blob--2" />
+            </div>
             <div className={`about__inner${isMobile ? ' about__inner--mobile' : ''}`}>
 
                 {/* ---- Image with 3-D tilt ---- */}
@@ -78,6 +85,7 @@ const About = ({ isMobile }) => {
                         viewport={{ once: true, margin: '-80px' }}
                     >
                         <p className="section-label">Mais um pouco</p>
+                        <br/>
                         <h2 className="section-title">Sobre Mim</h2>
                     </motion.div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import '../styles/App.css';
@@ -56,14 +56,40 @@ const PROJECTS = [
 
 const openUrl = (url) => window.open(url, '_blank')?.focus();
 
-const ProjectCard = ({ project, toastStyle }) => (
+const ProjectCard = ({ project, toastStyle }) => {
+    const cardRef = useRef(null);
+
+    const handleMouseMove = (e) => {
+        const card = cardRef.current;
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateY(-8px)`;
+        card.style.boxShadow = `
+            ${-x * 12}px ${-y * 12}px 40px rgba(var(--color-accent-rgb), 0.18),
+            0 20px 60px rgba(0,0,0,0.5)
+        `;
+    };
+
+    const handleMouseLeave = () => {
+        const card = cardRef.current;
+        if (!card) return;
+        card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0)';
+        card.style.boxShadow = '';
+    };
+
+    return (
     <motion.div
+        ref={cardRef}
         className="project-card"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        whileHover={{ y: -8 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ transition: 'transform 0.12s ease, box-shadow 0.12s ease' }}
     >
         <div className="project-card__image-wrapper">
             <img src={project.image} alt={project.name} className="project-card__image" />
@@ -108,7 +134,8 @@ const ProjectCard = ({ project, toastStyle }) => (
             </div>
         </div>
     </motion.div>
-);
+    );
+};
 
 const Projects = ({ isMobile }) => {
     const [activeStep, setActiveStep] = useState(0);
@@ -132,6 +159,7 @@ const Projects = ({ isMobile }) => {
                 transition={{ duration: 0.6 }}
             >
                 <p className="section-label">Alguns dos meus</p>
+                <br/>
                 <h2 className="section-title">Projetos</h2>
             </motion.div>
 

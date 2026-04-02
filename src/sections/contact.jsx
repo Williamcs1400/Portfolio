@@ -74,7 +74,9 @@ const Contact = ({ scrollToSection, sectionRefs }) => {
     return (
         <section className="contact">
             <Toaster />
-            <div className="contact__bg-text" aria-hidden="true">CONTATO</div>
+            {/*<div className="contact__bg-text" aria-hidden="true">CONTATO</div>*/}
+            {/* Grid pattern overlay */}
+            <div className="contact__grid-overlay" aria-hidden="true" />
 
             <motion.div
                 style={{ textAlign: 'center', marginBottom: '2rem' }}
@@ -84,6 +86,7 @@ const Contact = ({ scrollToSection, sectionRefs }) => {
                 transition={{ duration: 0.6 }}
             >
                 <p className="section-label">Vamos conversar?</p>
+                <br/>
                 <h2 className="section-title">Entre em Contato</h2>
                 <p className="section-desc" style={{ margin: '0 auto', textAlign: 'center' }}>
                     Aberto a oportunidades, freelas ou apenas uma boa conversa sobre tecnologia.

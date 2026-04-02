@@ -14,12 +14,35 @@ const navItems = [
 const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 30);
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    // Highlight nav item of the visible section
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const key = entry.target.dataset.section;
+                        if (key) setActiveSection(key);
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+        Object.entries(sectionRefs).forEach(([key, ref]) => {
+            if (ref.current) {
+                ref.current.dataset.section = key;
+                observer.observe(ref.current);
+            }
+        });
+        return () => observer.disconnect();
+    }, [sectionRefs]);
 
     const handleNav = (key) => {
         scrollToSection(sectionRefs[key]);
@@ -29,10 +52,13 @@ const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
     return (
         <>
             <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
+                {/* Brand with WC logo */}
                 <button
                     className="header__brand"
                     onClick={() => scrollToSection(sectionRefs.home)}
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}
                 >
+                    <span className="header__brand-logo" aria-hidden="true">WC</span>
                     William Coelho
                 </button>
 
@@ -41,10 +67,17 @@ const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
                         {navItems.map(({ label, key }) => (
                             <button
                                 key={key}
-                                className="header__nav-item"
+                                className={`header__nav-item${activeSection === key ? ' header__nav-item--active' : ''}`}
                                 onClick={() => handleNav(key)}
                             >
                                 {label}
+                                {activeSection === key && (
+                                    <motion.span
+                                        className="header__nav-dot"
+                                        layoutId="nav-dot"
+                                        transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                                    />
+                                )}
                             </button>
                         ))}
                         <ThemeSelector />
@@ -91,7 +124,7 @@ const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
                                 {navItems.map(({ label, key }) => (
                                     <button
                                         key={key}
-                                        className="drawer__nav-item"
+                                        className={`drawer__nav-item${activeSection === key ? ' drawer__nav-item--active' : ''}`}
                                         onClick={() => handleNav(key)}
                                     >
                                         {label}
@@ -107,3 +140,4 @@ const Header = ({ scrollToSection, sectionRefs, isMobile }) => {
 };
 
 export default Header;
+

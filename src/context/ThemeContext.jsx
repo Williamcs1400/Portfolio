@@ -4,11 +4,11 @@ const ThemeContext = createContext(null);
 
 export const THEMES = [
     // ── Escuros ──────────────────────────────────────────────────
+    { id: 'ciano-preto',     name: 'Ciano & Preto',     accent: '#22D3EE', bg: '#050A0F', dark: true  },
     { id: 'verde-preto',     name: 'Verde & Preto',     accent: '#22C55E', bg: '#05090A', dark: true  },
+    { id: 'roxo-preto',      name: 'Roxo & Preto',      accent: '#A78BFA', bg: '#07070F', dark: true  },
     { id: 'vermelho-preto',  name: 'Vermelho & Preto',  accent: '#EF4444', bg: '#09050A', dark: true  },
     { id: 'laranja-preto',   name: 'Laranja & Preto',   accent: '#F97316', bg: '#09080A', dark: true  },
-    { id: 'roxo-preto',      name: 'Roxo & Preto',      accent: '#A78BFA', bg: '#07070F', dark: true  },
-    { id: 'ciano-preto',     name: 'Ciano & Preto',     accent: '#22D3EE', bg: '#050A0F', dark: true  },
     { id: 'rosa-preto',      name: 'Rosa & Preto',      accent: '#EC4899', bg: '#09050A', dark: true  },
     { id: 'dourado-preto',   name: 'Dourado & Preto',   accent: '#EAB308', bg: '#0A090A', dark: true  },
     // ── Claros ───────────────────────────────────────────────────
@@ -21,7 +21,7 @@ export const THEMES = [
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setThemeState] = useState(
-        () => localStorage.getItem('portfolio-theme') || 'verde-preto'
+        () => localStorage.getItem('portfolio-theme') || 'ciano-preto'
     );
 
     const setTheme = (id) => {

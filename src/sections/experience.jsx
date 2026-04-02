@@ -6,6 +6,7 @@ import '../styles/App.css';
 const SKILLS = [
     {
         category: 'Frontend',
+        emoji: '🎨',
         color: '#A78BFA',
         items: [
             { name: 'HTML / CSS', level: 5 },
@@ -17,6 +18,7 @@ const SKILLS = [
     },
     {
         category: 'Backend',
+        emoji: '⚙️',
         color: '#22D3EE',
         items: [
             { name: 'Java + Spring Boot', level: 5 },
@@ -29,6 +31,7 @@ const SKILLS = [
     },
     {
         category: 'Mobile',
+        emoji: '📱',
         color: '#F472B6',
         items: [
             { name: 'React Native', level: 5 },
@@ -40,6 +43,7 @@ const SKILLS = [
     },
     {
         category: 'DevOps & Dados',
+        emoji: '🚀',
         color: '#34D399',
         items: [
             { name: 'Docker', level: 4 },
@@ -82,11 +86,12 @@ const Experience = ({ isMobile }) => (
             transition={{ duration: 0.6 }}
         >
             <p className="section-label">Tecnologias &amp; Ferramentas</p>
+            <br/>
             <h2 className="section-title">Habilidades</h2>
         </motion.div>
 
         <div className={`experience__grid${isMobile ? ' experience__grid--mobile' : ''}`}>
-            {SKILLS.map(({ category, color, items }, i) => (
+            {SKILLS.map(({ category, emoji, color, items }, i) => (
                 <motion.div
                     key={category}
                     className="skill-card"
@@ -103,6 +108,7 @@ const Experience = ({ isMobile }) => (
                             className="skill-card__category-dot"
                             style={{ background: color }}
                         />
+                        <span className="skill-card__emoji">{emoji}</span>
                         {category}
                     </div>
                     <ul className="skill-card__list">

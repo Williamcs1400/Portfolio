@@ -27,6 +27,8 @@
   --glow-primary:         rgba(34, 197, 94, 0.13);
   --glow-secondary:       rgba(74, 222, 128, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="vermelho-preto"] {
@@ -51,6 +53,8 @@
   --glow-primary:         rgba(239, 68, 68, 0.13);
   --glow-secondary:       rgba(248, 113, 113, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="laranja-preto"] {
@@ -75,6 +79,8 @@
   --glow-primary:         rgba(249, 115, 22, 0.13);
   --glow-secondary:       rgba(251, 146, 60, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="roxo-preto"] {
@@ -99,6 +105,8 @@
   --glow-primary:         rgba(124, 58, 237, 0.13);
   --glow-secondary:       rgba(139, 92, 246, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="ciano-preto"] {
@@ -123,6 +131,8 @@
   --glow-primary:         rgba(6, 182, 212, 0.13);
   --glow-secondary:       rgba(34, 211, 238, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="rosa-preto"] {
@@ -147,6 +157,8 @@
   --glow-primary:         rgba(236, 72, 153, 0.13);
   --glow-secondary:       rgba(244, 114, 182, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 [data-theme="dourado-preto"] {
@@ -171,6 +183,8 @@
   --glow-primary:         rgba(234, 179, 8, 0.13);
   --glow-secondary:       rgba(250, 204, 21, 0.08);
   --color-hover-subtle:   rgba(255, 255, 255, 0.05);
+  --icon-filter:          invert(1) brightness(1.8);
+  --icon-filter-hover:    invert(1) brightness(2.2);
 }
 
 /* =================== LIGHT THEMES =================== */
@@ -197,6 +211,8 @@
   --glow-primary:         rgba(22, 163, 74, 0.10);
   --glow-secondary:       rgba(34, 197, 94, 0.06);
   --color-hover-subtle:   rgba(0, 0, 0, 0.04);
+  --icon-filter:          none;
+  --icon-filter-hover:    none;
 }
 
 [data-theme="vermelho-branco"] {
@@ -221,6 +237,8 @@
   --glow-primary:         rgba(220, 38, 38, 0.10);
   --glow-secondary:       rgba(239, 68, 68, 0.06);
   --color-hover-subtle:   rgba(0, 0, 0, 0.04);
+  --icon-filter:          none;
+  --icon-filter-hover:    none;
 }
 
 [data-theme="laranja-branco"] {
@@ -245,6 +263,8 @@
   --glow-primary:         rgba(234, 88, 12, 0.10);
   --glow-secondary:       rgba(249, 115, 22, 0.06);
   --color-hover-subtle:   rgba(0, 0, 0, 0.04);
+  --icon-filter:          none;
+  --icon-filter-hover:    none;
 }
 
 [data-theme="azul-branco"] {
@@ -269,6 +289,8 @@
   --glow-primary:         rgba(37, 99, 235, 0.10);
   --glow-secondary:       rgba(59, 130, 246, 0.06);
   --color-hover-subtle:   rgba(0, 0, 0, 0.04);
+  --icon-filter:          none;
+  --icon-filter-hover:    none;
 }
 
 [data-theme="roxo-branco"] {
@@ -293,5 +315,7 @@
   --glow-primary:         rgba(124, 58, 237, 0.10);
   --glow-secondary:       rgba(139, 92, 246, 0.06);
   --color-hover-subtle:   rgba(0, 0, 0, 0.04);
+  --icon-filter:          none;
+  --icon-filter-hover:    none;
 }
 

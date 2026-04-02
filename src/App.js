@@ -5,6 +5,7 @@ import { React, useEffect, useState, useRef } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import CursorGlow from './components/CursorGlow';
 import BackToTop from './components/BackToTop';
+import LoadingScreen from './components/LoadingScreen';
 import Home from './sections/home';
 import Header from './sections/header';
 import About from './sections/about';
@@ -47,6 +48,7 @@ function AppContent() {
 
     return (
         <div>
+            <LoadingScreen />
             <CursorGlow />
             <BackToTop />
             <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />

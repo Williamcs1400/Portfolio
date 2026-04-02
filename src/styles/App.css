@@ -14,6 +14,60 @@
 }
 
 /* ============================================================
+   HEADER — Brand logo pill + active nav indicator
+   ============================================================ */
+.header__brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-gradient);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(var(--color-accent-rgb), 0.35);
+  transition: var(--transition);
+}
+
+.header__brand:hover .header__brand-logo {
+  box-shadow: 0 0 24px rgba(var(--color-accent-rgb), 0.55);
+  transform: rotate(-3deg) scale(1.08);
+}
+
+.header__nav-item {
+  position: relative;
+}
+
+.header__nav-item--active {
+  color: var(--color-text) !important;
+}
+
+.header__nav-dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.7);
+}
+
+.drawer__nav-item--active {
+  color: var(--color-text) !important;
+  background: rgba(var(--color-accent-rgb), 0.1);
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.25rem;
+}
+
+/* ============================================================
    HEADER
    ============================================================ */
 .header {
@@ -232,6 +286,11 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+/* Override to allow floating cards to escape horizontal bounds */
+.home > .home__inner {
+  overflow: visible;
 }
 
 .home::before {
@@ -543,7 +602,7 @@
   width: 36px;
   height: 36px;
   margin-bottom: 0.75rem;
-  filter: hue-rotate(220deg) saturate(1.5);
+  filter: var(--icon-filter);
   opacity: 0.9;
 }
 
@@ -662,7 +721,7 @@
 /* Timeline dot on the line */
 .wh-timeline__dot {
   position: absolute;
-  left: -2.5rem;
+  left: -3rem;
   top: 1.85rem;
   width: 1rem;
   height: 1rem;
@@ -1801,9 +1860,6 @@
   50%       { opacity: 1;   box-shadow: 0 0 22px rgba(var(--color-accent-rgb), 0.7); }
 }
 
-/* ============================================================
-   CARD — Universal glass hover lift
-   ============================================================ */
 .skill-card,
 .project-card,
 .about__stat-card,
@@ -1812,4 +1868,842 @@
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.loading-logo {
+  width: 76px;
+  height: 76px;
+  border-radius: 18px;
+  background: var(--color-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow), 0 0 60px rgba(var(--color-accent-rgb), 0.3);
+}
+
+.loading-logo__text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.03em;
+}
+
+.loading-name {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.loading-bar-track {
+  width: 180px;
+  height: 2px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: var(--color-gradient);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================
+   HOME — Aurora animated background
+   ============================================================ */
+.home__aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home__aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.home__aurora-blob--1 {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.18), transparent 70%);
+  top: -200px;
+  right: -120px;
+  animation: aurora-float-1 14s ease-in-out infinite;
+}
+
+.home__aurora-blob--2 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(var(--color-accent-2-rgb), 0.14), transparent 70%);
+  bottom: -140px;
+  left: -100px;
+  animation: aurora-float-2 18s ease-in-out infinite;
+}
+
+.home__aurora-blob--3 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.10), transparent 70%);
+  top: 40%;
+  left: 38%;
+  animation: aurora-float-3 11s ease-in-out infinite;
+}
+
+@keyframes aurora-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-55px, 40px) scale(1.08); }
+  66%       { transform: translate(35px, -25px) scale(0.95); }
+}
+@keyframes aurora-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(50px, -50px) scale(1.12); }
+  70%       { transform: translate(-30px, 30px) scale(0.92); }
+}
+@keyframes aurora-float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-35px, -35px) scale(1.18); }
+}
+
+/* ============================================================
+   HOME — About section Aurora blobs
+   ============================================================ */
+.about__aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about__aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.about__aurora-blob--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.10), transparent 70%);
+  top: -100px;
+  left: -100px;
+  animation: aurora-float-1 16s ease-in-out infinite;
+}
+
+.about__aurora-blob--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(var(--color-accent-2-rgb), 0.08), transparent 70%);
+  bottom: -100px;
+  right: -80px;
+  animation: aurora-float-2 20s ease-in-out infinite;
+}
+
+/* ============================================================
+   HOME — Name glitch animation
+   ============================================================ */
+@keyframes name-glitch {
+  0%, 78%, 100% { transform: none; filter: none; }
+  79%  { transform: translate(-4px, -2px); filter: hue-rotate(110deg) brightness(1.5); }
+  80%  { transform: translate(4px, 2px);  filter: hue-rotate(-110deg) brightness(0.8); }
+  81%  { transform: translate(-2px, 0);   filter: hue-rotate(55deg) brightness(1.2); }
+  82%  { transform: none; filter: none; }
+}
+
+.glitch-name {
+  animation: name-glitch 9s ease-in-out infinite;
+}
+
+/* ============================================================
+   HOME — Spinning conic-gradient ring wrapper
+   ============================================================ */
+@property --ring-deg {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.home__image-ring-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.home__spin-ring-anim {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from var(--ring-deg),
+    var(--color-accent)        0%,
+    var(--color-accent-light)  30%,
+    var(--color-accent-2-light) 55%,
+    var(--color-accent-light)  80%,
+    var(--color-accent)        100%
+  );
+  animation: conic-ring-spin 4.5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes conic-ring-spin {
+  to { --ring-deg: 360deg; }
+}
+
+/* Fallback for browsers without @property support */
+@supports not (background: conic-gradient(from 1turn, red, blue)) {
+  .home__spin-ring-anim {
+    background: var(--color-gradient);
+    animation: ring-fallback-spin 4.5s linear infinite;
+  }
+  @keyframes ring-fallback-spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+/* Override image-ring background so spin-ring shows */
+.home__image-ring-wrapper .home__image-ring {
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg);
+}
+
+/* Remove the old ring::before ring-pulse on the ring-wrapper version */
+.home__image-ring-wrapper .home__image-ring::before {
+  content: none;
+}
+
+/* ============================================================
+   HOME — Floating code cards
+   ============================================================ */
+.home__code-card {
+  position: absolute;
+  background: rgba(var(--color-accent-rgb), 0.05);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.18);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.875rem;
+  font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow), 0 0 20px rgba(var(--color-accent-rgb), 0.08);
+  z-index: 3;
+}
+
+.home__code-card--1 {
+  top: 5%;
+  left: -5px;
+  animation: code-float-1 9s ease-in-out infinite;
+}
+
+.home__code-card--2 {
+  bottom: 22%;
+  left: -10px;
+  animation: code-float-2 11s ease-in-out infinite;
+}
+
+@keyframes code-float-1 {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg); opacity: 0.75; }
+  50%       { transform: translateY(-14px) rotate(0.5deg); opacity: 1; }
+}
+
+@keyframes code-float-2 {
+  0%, 100% { transform: translateY(0) rotate(1deg); opacity: 0.65; }
+  50%       { transform: translateY(11px) rotate(-0.5deg); opacity: 0.95; }
+}
+
+.code-keyword { color: var(--color-accent-light); font-weight: 600; }
+.code-string  { color: var(--color-accent-2-light); }
+.code-comment { color: var(--color-text-muted); font-style: italic; }
+.code-var     { color: var(--color-text); }
+.code-fn      { color: var(--color-accent-2-light); font-weight: 500; }
+.code-op      { color: var(--color-text-secondary); }
+
+/* ============================================================
+   ABOUT — Background decorative text
+   ============================================================ */
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 20vw, 20rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(var(--color-accent-rgb), 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.1em;
+  z-index: 0;
+}
+
+.about > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   WORK HISTORY — Company badge
+   ============================================================ */
+.wh-card__company-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 14px rgba(var(--color-accent-rgb), 0.2);
+}
+
+/* ============================================================
+   EXPERIENCE — Category icons
+   ============================================================ */
+.skill-card__emoji {
+  font-size: 1.1rem;
+  line-height: 1;
+  margin-right: 0.15rem;
+}
+
+/* ============================================================
+   SKILL BARS — Shimmer animation
+   ============================================================ */
+.skill-bar__fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar__fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: bar-shimmer 3.2s ease-in-out infinite;
+}
+
+@keyframes bar-shimmer {
+  0%        { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(220%); }
+}
+
+/* ============================================================
+   SECTION LABEL — gradient text
+   ============================================================ */
+.section-label {
+  background: var(--color-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* ============================================================
+   HOME STATS — glow on hover
+   ============================================================ */
+.home__stat-value {
+  transition: filter 0.3s ease;
+}
+
+.home__stat:hover .home__stat-value {
+  filter: drop-shadow(0 0 12px rgba(var(--color-accent-rgb), 0.6));
+}
+
+/* ============================================================
+   AVAILABLE BADGE — slide-in entrance
+   ============================================================ */
+.available-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.available-badge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(var(--color-accent-rgb), 0.12) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: badge-shimmer 4s ease-in-out infinite 1s;
+}
+
+@keyframes badge-shimmer {
+  0%        { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(300%); }
+}
+
+/* ============================================================
+   CONTACT — hover glow overlay
+   ============================================================ */
+.contact__link-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-accent-rgb), 0.09) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact__link-card:hover::before {
+  opacity: 1;
+}
+
+.contact__link-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   WORK HISTORY — enhanced card hover
+   ============================================================ */
+.wh-card:hover {
+  border-color: var(--color-border-accent);
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-glow), var(--shadow);
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   PROJECT CARD — remove framer whileHover conflict
+   ============================================================ */
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ============================================================
+   ORBIT BADGES — enhanced interactive glow
+   ============================================================ */
+.orbit-badge {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+.orbit-badge:hover {
+  background: rgba(var(--color-accent-rgb), 0.15) !important;
+  transform: scale(1.35) !important;
+  box-shadow: 0 0 28px rgba(var(--color-accent-rgb), 0.65), var(--shadow) !important;
+  z-index: 10;
+}
+
+/* ============================================================
+   SECTION TITLE — animated underline glow (enhanced)
+   ============================================================ */
+.section-title::after {
+  animation: underline-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes underline-glow {
+  0%, 100% { opacity: 0.65; box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.3); width: 48px; }
+  50%       { opacity: 1;    box-shadow: 0 0 24px rgba(var(--color-accent-rgb), 0.8); width: 64px; }
+}
+
+/* ============================================================
+   BTN — magnetic class (enhanced glow on hover)
+   ============================================================ */
+.btn--magnetic {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+}
+
+.btn--primary.btn--magnetic:hover {
+  box-shadow: 0 0 50px rgba(var(--color-accent-rgb), 0.5), 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.btn--outline.btn--magnetic:hover {
+  box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.25);
+}
+
+/* ============================================================
+   SKILL CARD — neon left border on hover
+   ============================================================ */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-gradient);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+.skill-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* ============================================================
+   WORDING — section-desc line clamp helpers
+   ============================================================ */
+.section-desc {
+  max-width: 560px;
+}
+
+/* ============================================================
+   RESPONSIVE — ensure code cards and aurora don't overflow on small screens
+   ============================================================ */
+@media (max-width: 768px) {
+  .home__aurora-blob--1 { width: 300px; height: 300px; }
+  .home__aurora-blob--2 { width: 240px; height: 240px; }
+  .home__aurora-blob--3 { display: none; }
+  .about__bg-text { font-size: 5rem; }
+}
+
+/* ============================================================
+   CONTACT — Dot grid overlay
+   ============================================================ */
+.contact__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(var(--color-accent-rgb), 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   PROJECTS — image top gradient tint
+   ============================================================ */
+.project-card__image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--color-accent-rgb), 0.07) 0%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   WH CARD — animated border on hover via gradient background
+   ============================================================ */
+.wh-card {
+  background-clip: padding-box;
+}
+
+/* ============================================================
+   ABOUT STAT CARD — neon on hover
+   ============================================================ */
+.about__stat-card:hover {
+  border-color: rgba(var(--color-accent-rgb), 0.5);
+  box-shadow: var(--shadow-glow), var(--shadow);
+}
+
+/* ============================================================
+   TECH BADGE — pop on hover
+   ============================================================ */
+.about__tech-badge:hover {
+  background: rgba(var(--color-accent-rgb), 0.2);
+  border-color: var(--color-accent);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 12px rgba(var(--color-accent-rgb), 0.3);
+}
+
+/* ============================================================
+   HERO FIGURE — Transparent cut-out image
+   ============================================================ */
+.hero-figure-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(320px, 40vw, 480px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+
+.hero-figure-wrapper--mobile {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.hero-figure__img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  max-height: min(80vh, 600px);
+  object-fit: contain;
+  object-position: top center;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 96%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 96%);
+  filter: drop-shadow(0 12px 48px rgba(var(--color-accent-rgb), 0.22))
+          drop-shadow(0 2px 12px rgba(0,0,0,0.35));
+  animation: figure-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-figure__img--mobile {
+  max-height: 260px;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 92%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 92%);
+}
+
+@keyframes figure-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+
+.hero-figure__glow {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68%;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(var(--color-accent-rgb), 0.30),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: glow-breathe 4.5s ease-in-out infinite;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1); }
+  50%       { opacity: 1;   transform: translateX(-50%) scaleX(1.14); }
+}
+
+/* ============================================================
+   HERO — Pulsing radar rings
+   ============================================================ */
+.hero-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--color-accent-rgb), 0.22);
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: center center;
+}
+
+.hero-pulse-ring--1 {
+  width: 300px; height: 300px;
+  margin: -150px 0 0 -150px;
+  animation: radar-pulse 3.6s ease-out infinite;
+}
+
+.hero-pulse-ring--2 {
+  width: 450px; height: 450px;
+  margin: -225px 0 0 -225px;
+  animation: radar-pulse 3.6s ease-out infinite 1.2s;
+}
+
+.hero-pulse-ring--3 {
+  width: 600px; height: 600px;
+  margin: -300px 0 0 -300px;
+  animation: radar-pulse 3.6s ease-out infinite 2.4s;
+}
+
+@keyframes radar-pulse {
+  0%   { transform: scale(0.72); opacity: 0.55; }
+  60%  { opacity: 0.14; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+
+/* ============================================================
+   HERO — Floating skill cards
+   ============================================================ */
+.hero-float-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.875rem;
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.28);
+  border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(var(--color-accent-rgb), 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 5;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero-float-card--1 { top: 14%;    left: -60px;  animation: hfc-left  6s   ease-in-out infinite;      }
+.hero-float-card--2 { bottom: 28%; left: -65px;  animation: hfc-left  7.5s ease-in-out infinite 0.8s; }
+.hero-float-card--3 { top: 26%;    right: -100px; animation: hfc-right 5.8s ease-in-out infinite 0.4s; }
+.hero-float-card--4 { bottom: 18%; right: -55px; animation: hfc-right 8s   ease-in-out infinite 1.4s; }
+
+@keyframes hfc-left {
+  0%, 100% { transform: translateY(0)    rotate(-1deg); }
+  50%       { transform: translateY(-11px) rotate(0.5deg); }
+}
+@keyframes hfc-right {
+  0%, 100% { transform: translateY(0)   rotate(1deg); }
+  50%       { transform: translateY(10px) rotate(-0.5deg); }
+}
+
+.hero-float-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.hero-float-card__logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 5px rgba(var(--color-accent-rgb), 0.5));
+}
+
+.hero-float-card__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero-float-card__sub {
+  font-size: 0.69rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+  margin: 2px 0 0;
+}
+
+/* ============================================================
+   HERO — Floating pill badge (round, gradient)
+   ============================================================ */
+.hero-float-pill {
+  position: absolute;
+  top: 4%;
+  right: -44px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--color-gradient);
+  box-shadow: var(--shadow-glow), var(--shadow);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: hfc-right 6.5s ease-in-out infinite 0.9s;
+}
+
+.hero-float-pill__num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-float-pill__label {
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   HOME inner — overflow visible for floating cards
+   ============================================================ */
+.home__inner {
+  overflow: visible !important;
+}
+
+/* Mobile adjustments for figure */
+@media (max-width: 768px) {
+  .hero-figure-wrapper {
+    width: 100%;
+    max-width: 240px;
+  }
+  .hero-figure__img {
+    max-height: 240px;
+  }
+}
+
 
