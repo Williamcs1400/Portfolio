@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.0af55783.css",
-    "main.js": "/static/js/main.4a763028.js",
+    "main.js": "/static/js/main.12f36ab9.js",
     "static/media/ImagemPrincipal.png": "/static/media/ImagemPrincipal.84e2680fc9bb05547796.png",
     "static/media/LogoIA.png": "/static/media/LogoIA.8688771c80d8eff86f6f.png",
     "static/media/me-about1.jpg": "/static/media/me-about1.657137d217bb68560d96.jpg",
-    "static/media/WilliamCoelho_CV.pdf": "/static/media/WilliamCoelho_CV.ba6fe99293d055e88c1b.pdf",
+    "static/media/WilliamCoelho_CV.pdf": "/static/media/WilliamCoelho_CV.7bc7ead4062f9fd4ce20.pdf",
     "static/media/python.png": "/static/media/python.cd407a640c6f3ab2209b.png",
     "static/media/android.png": "/static/media/android.5468b32855bc1dad75d2.png",
     "static/media/java-api.jpg": "/static/media/java-api.5307de954a89043f4fe0.jpg",
@@ -17,10 +17,10 @@
     "static/media/linkedin.png": "/static/media/linkedin.032cf8a63be2f0f4d425.png",
     "index.html": "/index.html",
     "main.0af55783.css.map": "/static/css/main.0af55783.css.map",
-    "main.4a763028.js.map": "/static/js/main.4a763028.js.map"
+    "main.12f36ab9.js.map": "/static/js/main.12f36ab9.js.map"
   },
   "entrypoints": [
     "static/css/main.0af55783.css",
-    "static/js/main.4a763028.js"
+    "static/js/main.12f36ab9.js"
   ]
 }
