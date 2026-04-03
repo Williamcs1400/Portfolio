@@ -15,8 +15,11 @@ const fadeUp = {
 };
 
 const coreTech = [
-    'React', 'TypeScript', 'Node.js', 'Java', 'Spring Boot',
-    'React Native', 'Kotlin', 'Python', 'Docker', 'PostgreSQL',
+    'Java', 'Spring Boot', '.NET Core', 'C#', 'ReactJS', 'Angular', 'TypeScript', 'JavaScript', 'NodeJS',
+    'React Native', 'Kotlin', 'Flutter', 'Android Studio', 'Jenkins', 'Python',
+    'Docker', 'PostgreSQL', 'MySQL', 'MongoDB', 'AWS', 'Azure', 'CI/CD', 'QT C++',
+    'Git', 'Metodologias Ágeis', 'Testes Unitários', 'JUnit', 'Mockito',
+    'Karma', 'Jasmine', 'Jest', 'IA e copilotos'
 ];
 
 const About = ({ isMobile }) => {
